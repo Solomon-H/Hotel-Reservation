@@ -20,10 +20,10 @@ public class Hotel {
         return false;
     }
 
-    public void bookRoom(int roomNumber) {
+    public void bookRoom(int roomNumber, String guestName, String guestPhoneNumber, int numberOfGuests, int numberOfDays) {
         for (Room room : rooms) {
             if (room.getRoomNumber() == roomNumber && !room.isReserved()) {
-                room.reserve();
+                room.reserve(guestName, guestPhoneNumber, numberOfGuests, numberOfDays);
                 System.out.println("Room " + roomNumber + " has been booked.");
                 return;
             }
@@ -50,5 +50,26 @@ public class Hotel {
             }
         }
     }
+
+    public List<Room> getBookedRooms() {
+        List<Room> bookedRooms = new ArrayList<>();
+        for (Room room : rooms) {
+            if (room.isReserved()) {
+                bookedRooms.add(room);
+            }
+        }
+        return bookedRooms;
+    }
+
+    public Room getRoomByNumber(int roomNumber) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                return room;
+            }
+        }
+        return null; 
+    }
+
 }
+
 
