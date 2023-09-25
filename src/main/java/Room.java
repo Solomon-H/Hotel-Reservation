@@ -62,5 +62,13 @@ public class Room {
     public int getNumberOfDays() {
         return numberOfDays;
     }
+
+    public Food getFood() {
+        return null;
+    }
+
+    public Transportation getTransportation() {
+        return null;
+    }
     
 }

@@ -70,6 +70,40 @@ public class Hotel {
         return null; 
     }
 
+    public void bookFood(int roomNumber, boolean hasBreakfast, boolean hasLunch, boolean hasDinner) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber && room.isReserved()) {
+                Food food = room.getFood();
+                if (hasBreakfast) {
+                    food.addBreakfast();
+                }
+                if (hasLunch) {
+                    food.addLunch();
+                }
+                if (hasDinner) {
+                    food.addDinner();
+                }
+                System.out.println("Food options for Room " + roomNumber + " have been booked.");
+                return;
+            }
+        }
+        System.out.println("Room " + roomNumber + " is not reserved or does not exist.");
+    }
+
+    public void bookTransportation(int roomNumber, String transportationType, String carType, int numberOfDays) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber && room.isReserved()) {
+                Transportation transportation = room.getTransportation();
+                transportation.setTransportationType(transportationType);
+                transportation.setCarType(carType);
+                transportation.setNumberOfDays(numberOfDays);
+                System.out.println("Transportation for Room " + roomNumber + " has been booked.");
+                return;
+            }
+        }
+        System.out.println("Room " + roomNumber + " is not reserved or does not exist.");
+    }
+
 }
 
 

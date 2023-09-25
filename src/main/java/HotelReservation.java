@@ -17,7 +17,7 @@ public class HotelReservation {
             System.out.print("Enter from the Menu choice: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -31,10 +31,10 @@ public class HotelReservation {
                     }
                     break;
 
-                    case 2:
+                case 2:
                     System.out.print("Enter room number to book: ");
                     int roomToBook = scanner.nextInt();
-                    scanner.nextLine(); 
+                    scanner.nextLine();
 
                     if (hotel.isRoomAvailable(roomToBook)) {
                         System.out.print("Enter guest name: ");
@@ -65,7 +65,7 @@ public class HotelReservation {
                     hotel.displayAvailableRooms();
                     break;
 
-                    case 5:
+                case 5:
                     System.out.print("Enter room number to display reservation information: ");
                     int roomToDisplay = scanner.nextInt();
                     Room room = hotel.getRoomByNumber(roomToDisplay);
@@ -75,7 +75,7 @@ public class HotelReservation {
                         System.out.println("Guest Phone Number: " + room.getGuestPhoneNumber());
                         System.out.println("Number of Guests: " + room.getNumberOfGuests());
                         System.out.println("Number of Days stayed: " + room.getNumberOfDays());
-                        
+
                         double price = room.calculatePrice();
                         System.out.println("Price: $" + price);
                     } else {
@@ -84,6 +84,49 @@ public class HotelReservation {
                     break;
 
                 case 6:
+                    System.out.print("Enter room number to book food options: ");
+                    int roomForFood = scanner.nextInt();
+                    scanner.nextLine(); // Consume the newline character
+
+                    if (hotel.isRoomAvailable(roomForFood)) {
+                        System.out.print("Include breakfast? (yes/no): ");
+                        String breakfastChoice = scanner.nextLine();
+                        boolean hasBreakfast = breakfastChoice.equalsIgnoreCase("yes");
+
+                        System.out.print("Include lunch? (yes/no): ");
+                        String lunchChoice = scanner.nextLine();
+                        boolean hasLunch = lunchChoice.equalsIgnoreCase("yes");
+
+                        System.out.print("Include dinner? (yes/no): ");
+                        String dinnerChoice = scanner.nextLine();
+                        boolean hasDinner = dinnerChoice.equalsIgnoreCase("yes");
+
+                        hotel.bookFood(roomForFood, hasBreakfast, hasLunch, hasDinner);
+                    } else {
+                        System.out.println("Room " + roomForFood + " is not reserved or does not exist.");
+                    }
+                    break;
+
+                case 7:
+                    System.out.print("Enter room number to book transportation: ");
+                    int roomForTransportation = scanner.nextInt();
+                    scanner.nextLine(); // Consume the newline character
+
+                    if (hotel.isRoomAvailable(roomForTransportation)) {
+                        System.out.print("Enter transportation type (rental car/own car): ");
+                        String transportationType = scanner.nextLine();
+                        System.out.print("Enter car type (sedan/mid-size/suv): ");
+                        String carType = scanner.nextLine();
+                        System.out.print("Enter number of days: ");
+                        int numberOfDays = scanner.nextInt();
+
+                        hotel.bookTransportation(roomForTransportation, transportationType, carType, numberOfDays);
+                    } else {
+                        System.out.println("Room " + roomForTransportation + " is not reserved or does not exist.");
+                    }
+                    break;
+
+                case 8:
                     scanner.close();
                     System.exit(0);
                     break;
