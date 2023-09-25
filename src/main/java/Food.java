@@ -34,4 +34,9 @@ public class Food {
         }
         return totalCost;
     }
+
+    public double calculateTotalFoodCost() {
+        return 0;
+    }
 }
+

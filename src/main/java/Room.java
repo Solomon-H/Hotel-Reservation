@@ -5,6 +5,8 @@ public class Room {
     private String guestPhoneNumber;
     private int numberOfGuests;
     private int numberOfDays;
+    private Food food;
+    private Transportation transportation;
 
     public Room(int roomNumber) {
         this.roomNumber = roomNumber;
@@ -63,12 +65,20 @@ public class Room {
         return numberOfDays;
     }
 
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
     public Food getFood() {
-        return null;
+        return food;
+    }
+
+    public void setTransportation(Transportation transportation) {
+        this.transportation = transportation;
     }
 
     public Transportation getTransportation() {
-        return null;
+        return transportation;
     }
     
 }

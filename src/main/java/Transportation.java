@@ -4,8 +4,8 @@ public class Transportation {
     private int numberOfDays;
 
     public enum CarType {
-    sedan, mid_size, suv,
-   }
+        sedan, mid_size, suv
+    }
 
     public Transportation() {
         this.transportationType = "";
@@ -25,7 +25,7 @@ public class Transportation {
         this.numberOfDays = numberOfDays;
     }
 
-    public double calculateTransportationCost() {
+    public double calculateCarPrice() {
         double dailyRate;
         switch (CarType.valueOf(carType)) {
             case sedan:
@@ -38,7 +38,7 @@ public class Transportation {
                 dailyRate = 45.0;
                 break;
             default:
-                dailyRate = 0.0; 
+                dailyRate = 0.0;
         }
 
         double totalCost = dailyRate * numberOfDays;
@@ -49,4 +49,6 @@ public class Transportation {
 
         return totalCost;
     }
+
+
 }
