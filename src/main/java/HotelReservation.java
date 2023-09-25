@@ -14,7 +14,7 @@ public class HotelReservation {
             System.out.println("4. Display Available Rooms");
             System.out.println("5. Display Reservation Information");
             System.out.println("6. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.print("Enter from the Menu choice: ");
 
             int choice = scanner.nextInt();
             scanner.nextLine(); 
@@ -25,16 +25,16 @@ public class HotelReservation {
                     int roomNumber = scanner.nextInt();
                     boolean isAvailable = hotel.isRoomAvailable(roomNumber);
                     if (isAvailable) {
-                        System.out.println("Room " + roomNumber + " is available.");
+                        System.out.println("Room " + roomNumber + " is available.You can book it.");
                     } else {
-                        System.out.println("Room " + roomNumber + " is not available.");
+                        System.out.println("Room " + roomNumber + " is not available.It is already booked.");
                     }
                     break;
 
                     case 2:
                     System.out.print("Enter room number to book: ");
                     int roomToBook = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
+                    scanner.nextLine(); 
 
                     if (hotel.isRoomAvailable(roomToBook)) {
                         System.out.print("Enter guest name: ");
@@ -43,7 +43,7 @@ public class HotelReservation {
                         String guestPhoneNumber = scanner.nextLine();
                         System.out.print("Enter number of guests: ");
                         int numberOfGuests = scanner.nextInt();
-                        System.out.print("Enter number of days: ");
+                        System.out.print("Enter number of days to stay: ");
                         int numberOfDays = scanner.nextInt();
 
                         hotel.bookRoom(roomToBook, guestName, guestPhoneNumber, numberOfGuests, numberOfDays);
@@ -56,6 +56,7 @@ public class HotelReservation {
                 case 3:
                     System.out.print("Enter room number to cancel reservation: ");
                     int roomToCancel = scanner.nextInt();
+                    scanner.nextLine();
                     hotel.cancelRoomReservation(roomToCancel);
                     System.out.println("Reservation for Room " + roomToCancel + " has been canceled.");
                     break;
@@ -73,7 +74,7 @@ public class HotelReservation {
                         System.out.println("Guest Name: " + room.getGuestName());
                         System.out.println("Guest Phone Number: " + room.getGuestPhoneNumber());
                         System.out.println("Number of Guests: " + room.getNumberOfGuests());
-                        System.out.println("Number of Days: " + room.getNumberOfDays());
+                        System.out.println("Number of Days stayed: " + room.getNumberOfDays());
                         
                         double price = room.calculatePrice();
                         System.out.println("Price: $" + price);
